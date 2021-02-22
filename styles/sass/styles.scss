@@ -1,0 +1,167 @@
+@import '_variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap');
+
+
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 400%;
+    box-sizing: border-box;
+    background-color: $primary-color;
+    font-family: 'Montserrat', sans-serif;
+}
+
+// Navigation Bar
+.navbar {
+    background-color: $primary-color;
+    height: 6em;
+    display: flex;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.navbar__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
+}
+
+.navbar__logo {
+    width: 40px;
+    height: auto;
+    fill: $primary-color !important;
+}
+
+.navbar__burger {
+    padding: 10px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    z-index: 2;
+
+    .navbar__burger-box {
+        width: 35px;
+        height: 24px;
+        display: inline-block;
+        position: relative;
+    }
+
+    @mixin burger-line {
+        width: 100%;
+        height: 3px;
+        background-color: $secondary-color;
+        position: absolute;
+        left: 0;
+    }
+
+    .navbar__burger-inner {
+        @include burger-line;
+
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background-color .1s .2s ease-in-out;
+    }
+
+    .navbar__burger-inner::before,
+    .navbar__burger-inner::after {
+        @include burger-line;
+
+        content: '';
+        transition: transform .2s .1s ease-in-out, background-color .2s .1s ease-in-out;
+    }
+
+    .navbar__burger-inner::before {
+        top: -10px;
+    }
+
+    .navbar__burger-inner::after {
+        top: 10px;
+    }
+}
+
+
+.burger--active .navbar__burger-inner {
+    background-color: transparent;
+}
+
+.burger--active .navbar__burger-inner::before,
+.burger--active .navbar__burger-inner::after {
+    background-color: $primary-color;
+}
+
+.burger--active .navbar__burger-inner::before {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger--active .navbar__burger-inner::after {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+//Sidebar
+
+.navbar__navigation {
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+    position: absolute;
+    top: 0%;
+    right: 0;
+    transform: translateX(250px);
+    transition: transform .3s .1s ease-in-out;
+}
+
+.navbar__navigation--active {
+    transform: translateX(0px);
+}
+
+.navbar__navigation-list {
+    list-style: none;
+}
+
+.navbar__navigation-item {
+    margin-bottom: 20px;
+
+    a {
+        text-decoration: none;
+        color: $primary-color;
+        font-weight: 500;
+    }
+}
+
+
+// Hero Section
+.hero {
+    position: relative;
+    margin-top: 120px;
+    p {
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .hero__rectangle {
+        width: 80vw;
+        height: 80vw;
+        background: white;
+        transform: rotate(45deg);
+        position: absolute;
+        top: 20vh;
+        right: 60vw;
+        box-shadow: 0 0 10px black;
+    }
+
+    .hero__rectangle-right {
+        background-color: $secondary-color;
+        left: 60vw;
+    }
+}
+

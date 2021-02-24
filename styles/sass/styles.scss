@@ -10,6 +10,7 @@ html, body {
 body {
     margin: 0;
     padding: 0;
+    // padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     height: 400%;
     box-sizing: border-box;
     background-color: $primary-color;
@@ -19,7 +20,7 @@ body {
 // Navigation Bar
 .navbar {
     background-color: $primary-color;
-    height: 6em;
+    height: 100px;
     display: flex;
     z-index: 1;
     position: fixed;
@@ -36,9 +37,21 @@ body {
 }
 
 .navbar__logo {
-    width: 40px;
-    height: auto;
-    fill: $primary-color !important;
+
+    & svg {
+        width: 40px;
+        height: auto;
+        fill: $secondary-color;
+        transition: fill .2s .1s ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+         outline: none;
+         & svg {
+             fill: white;
+         }
+    }
 }
 
 .navbar__burger {
@@ -48,7 +61,21 @@ body {
     background-color: transparent;
     z-index: 2;
 
-    .navbar__burger-box {
+    &:hover,
+    &:focus {
+        outline: none;
+        .navbar__burger-inner,
+        .navbar__burger-inner::before,
+        .navbar__burger-inner::after {
+            background-color: white;
+        }
+        .burger--active .navbar__burger-inner::before,
+        .burger--active .navbar__burger-inner::after {
+            background-color: $primary-color;
+        }
+    }
+
+    &-box {
         width: 35px;
         height: 24px;
         display: inline-block;
@@ -59,16 +86,17 @@ body {
         width: 100%;
         height: 3px;
         background-color: $secondary-color;
+        border-radius: 3px;
         position: absolute;
         left: 0;
     }
 
-    .navbar__burger-inner {
+    &-inner {
         @include burger-line;
 
         top: 50%;
         transform: translateY(-50%);
-        transition: background-color .1s .2s ease-in-out;
+        transition: background-color .2s .1s ease-in-out;
     }
 
     .navbar__burger-inner::before,
@@ -79,15 +107,14 @@ body {
         transition: transform .2s .1s ease-in-out, background-color .2s .1s ease-in-out;
     }
 
-    .navbar__burger-inner::before {
+    &-inner::before {
         top: -10px;
     }
 
-    .navbar__burger-inner::after {
+    &-inner::after {
         top: 10px;
     }
 }
-
 
 .burger--active .navbar__burger-inner {
     background-color: transparent;
@@ -110,31 +137,64 @@ body {
 
 .navbar__navigation {
     height: 100vh;
-    width: 250px;
+    width: 70vw;
     background-color: white;
     position: absolute;
     top: 0%;
     right: 0;
-    transform: translateX(250px);
+    transform: translateX(70vw);
     transition: transform .3s .1s ease-in-out;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-.navbar__navigation--active {
-    transform: translateX(0px);
-}
-
-.navbar__navigation-list {
-    list-style: none;
-}
-
-.navbar__navigation-item {
-    margin-bottom: 20px;
-
-    a {
-        text-decoration: none;
-        color: $primary-color;
-        font-weight: 500;
+    &--active {
+        transform: translateX(0px);
     }
+
+    &-list {
+        list-style: none;
+        padding: 0;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-item {
+        font-size: 1.4rem;
+        letter-spacing: 0.1rem;
+        flex: 1;
+
+        }
+        a {
+            text-decoration: none;
+            color: $primary-color;
+            font-weight: 500;
+            position: relative;
+
+            &:focus {
+                outline: none;
+            }
+
+            &::after {
+                bottom: 0;
+                content: '';
+                height: 2px;
+                border-radius: 2px;
+                left: 50%;
+                position: absolute;
+                background: $primary-color;
+                transition: width .3s ease, left .3s ease;
+                width: 0;
+            }
+
+            &:hover::after,
+            &:focus::after {
+                width: 100%;
+                left: 0;
+            }
+        }
 }
 
 
@@ -148,7 +208,7 @@ body {
         text-align: center;
     }
 
-    .hero__rectangle {
+    &__rectangle {
         width: 80vw;
         height: 80vw;
         background: white;
@@ -159,9 +219,122 @@ body {
         box-shadow: 0 0 10px black;
     }
 
-    .hero__rectangle-right {
+    &__rectangle-right {
         background-color: $secondary-color;
         left: 60vw;
+    }
+
+    @mixin hero-align {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__text {
+        @include hero-align;
+
+        margin-top: 150px;
+
+        & svg {
+            width: 70vw;
+            height: auto;
+            animation: fill 1s ease forwards 3s;
+        }
+
+        & path:nth-child(1) {
+            stroke-dasharray: 256;
+            stroke-dashoffset: 257;
+            animation: line-anim 2s ease forwards;
+        }
+        & path:nth-child(2) {
+            stroke-dasharray: 143;
+            stroke-dashoffset: 143;
+            animation: line-anim 2s ease forwards .2s;
+        }
+        & path:nth-child(3) {
+            stroke-dasharray: 82;
+            stroke-dashoffset: 82;
+            animation: line-anim 2s ease forwards .4s;
+        }
+        & path:nth-child(4) {
+            stroke-dasharray: 112;
+            stroke-dashoffset: 112;
+            animation: line-anim 2s ease forwards .6s;
+        }
+        & path:nth-child(5) {
+            stroke-dasharray: 76;
+            stroke-dashoffset: 76;
+            animation: line-anim 2s ease forwards .8s;
+        }
+        & path:nth-child(6) {
+            stroke-dasharray: 195;
+            stroke-dashoffset: 195;
+            animation: line-anim 2s ease forwards 1s;
+        }
+        & path:nth-child(7) {
+            stroke-dasharray: 172;
+            stroke-dashoffset: 172;
+            animation: line-anim 2s ease forwards 1.2s;
+        }
+        & path:nth-child(8) {
+            stroke-dasharray: 144;
+            stroke-dashoffset: 144;
+            animation: line-anim 2s ease forwards 1.4s;
+        }
+        & path:nth-child(9) {
+            stroke-dasharray: 112;
+            stroke-dashoffset: 112;
+            animation: line-anim 2s ease forwards 1.6s;
+        }
+
+        @keyframes line-anim {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fill {
+            from {
+                fill: transparent;
+            }
+            to {
+                fill: white;
+            }
+        }
+    }
+
+    &__divider {
+        @include hero-align;
+
+        & svg {
+            width: 0vw;
+            height: 40px;
+            animation: divider-anim 1.5s ease forwards 3s;
+        }
+
+        @keyframes divider-anim {
+            to {
+                width: 60vw;
+            }
+        }
+    }
+
+    &__subtext {
+        @include hero-align;
+
+        & svg {
+            width: 50vw;
+            height: auto;
+            opacity: 0;
+            animation: subtext-anim 1s ease-in-out forwards 3s;
+        }
+
+        @keyframes subtext-anim {
+            to {
+                opacity: 1;
+            }
+        }
+
     }
 }
 

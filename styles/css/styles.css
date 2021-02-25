@@ -7,7 +7,6 @@ html, body {
 body {
   margin: 0;
   padding: 0;
-  height: 400%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #0C275C;
@@ -267,7 +266,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 150px;
+  margin-top: 200px;
 }
 
 .hero__text svg {
@@ -431,5 +430,83 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.counter {
+  width: 100%;
+}
+
+.counter__img {
+  width: 100%;
+  height: auto;
+}
+
+.counter__wrapper {
+  width: 100%;
+  height: 40%;
+  background-color: white;
+}
+
+.offer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.offer-heading {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  margin: 150px 0;
+  cursor: default;
+}
+
+.offer__card {
+  height: 20vh;
+  width: 40vw;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px black;
+          box-shadow: 0px 0px 5px 0px black;
+  background-color: white;
+  margin-bottom: 5em;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.offer__card::after {
+  height: 20vh;
+  width: 40vw;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px black;
+          box-shadow: 0px 0px 5px 0px black;
+  background-color: white;
+  margin-bottom: 5em;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 0px 0px 20px 0px black;
+          box-shadow: 0px 0px 20px 0px black;
+}
+
+.offer__card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.offer__card:hover::after {
+  opacity: 1;
 }
 /*# sourceMappingURL=styles.css.map */

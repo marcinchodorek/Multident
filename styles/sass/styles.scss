@@ -11,7 +11,6 @@ body {
     margin: 0;
     padding: 0;
     // padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-    height: 400%;
     box-sizing: border-box;
     background-color: $primary-color;
     font-family: 'Montserrat', sans-serif;
@@ -233,7 +232,7 @@ body {
     &__text {
         @include hero-align;
 
-        margin-top: 150px;
+        margin-top: 200px;
 
         & svg {
             width: 70vw;
@@ -337,4 +336,99 @@ body {
 
     }
 }
+
+
+// Count
+
+.counter {
+    width: 100%;
+
+    &__img {
+        width: 100%;
+        height: auto;
+    }
+
+    &__wrapper {
+        width: 100%;
+        height: 40%;
+        background-color: white;
+    }
+}
+
+
+
+// Offer
+
+.offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offer-heading {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    margin: 150px 0;
+    cursor: default;
+
+    // ! FIX Header highlight animation
+    // &::after {
+    //     bottom: 0;
+    //     content: '';
+    //     height: 2px;
+    //     border-radius: 2px;
+    //     left: 50%;
+    //     position: absolute;
+    //     background: $primary-color;
+    //     transition: width .3s ease, left .3s ease;
+    //     width: 0;
+    // }
+
+    // &:hover::after,
+    // &:focus::after {
+    //     width: 100%;
+    //     left: 0;
+    // }
+}
+
+@mixin card-styling {
+    height: 20vh;
+    width: 40vw;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px black;
+    background-color: white;
+    margin-bottom: 5em;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.offer__card {
+    @include card-styling;
+
+    position: relative;
+
+    &::after {
+        @include card-styling;
+
+        content: '';
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: 0px 0px 20px 0px black;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+}
+
+
+
+
 

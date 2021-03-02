@@ -14,7 +14,7 @@ setTimeout(() => {
 }, 3200)
 
 window.addEventListener('keydown', (e) => {
-    console.log(e.keyCode);
+    console.log(e.code);
 });
 
 

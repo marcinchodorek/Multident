@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <link rel="stylesheet" href="/styles/css/styles.css">
     <link rel="icon" href="/pictures/main-logo.svg" type="image/x-icon">
     <title>Multident</title>
@@ -82,13 +82,27 @@
     </section>
 
     <section class="counter">
-        <img src="/pictures/counter-pic.png" alt="Picture of toothbrushes" class="counter__img">
+        <img loading="lazy" src="/pictures/counter-pic.png" alt="Picture of toothbrushes" class="counter__img">
         <div class="counter__wrapper">
-
+            <ul class="counter__wrapper-list">
+                <li class="counter__wrapper-item">
+                    <i class="fas fa-heart"></i>
+                    <p> <span>3000</span> <br> zadowolonych pacjentów</p>
+                </li>
+                <li class="counter__wrapper-item">
+                    <i class="fas fa-plus-square"></i>
+                    <p> <span>6000</span> <br> wyleczonych zębów</p>
+                </li>
+                <li class="counter__wrapper-item">
+                    <i class="fas fa-coffee"></i>
+                    <p> <span>500</span> <br> wypitych kubków kawy</p>
+                </li>
+            </ul>
         </div>
     </section>
 
     <script src="javascript/script.js"></script>
+    <script src="https://kit.fontawesome.com/8e71691b9c.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

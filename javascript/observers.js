@@ -32,28 +32,6 @@ numbers.forEach(number => countNumbers.observe(number));
 
 
 
-// buttons appear anim
-const buttons = document.querySelectorAll('.cta-btn');
-
-const buttonsOptions = {
-    threshold: 0,
-    rootMargin: "0px 0px -100px 0px"
-};
-
-const buttonsObserver = new IntersectionObserver(function (entries, buttonsObserver) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            return;
-        } else {
-            entry.target.style.animation = `delayLoad 1.5s ease forwards`;
-            buttonsObserver.unobserve(entry.target);
-        }
-    })
-}, buttonsOptions);
-
-buttons.forEach(button => buttonsObserver.observe(button));
-
-
 // about disappear anim
 const aboutText = document.querySelector('.about__content');
 
@@ -77,24 +55,26 @@ toggleTextObserver.observe(aboutText);
 
 // image loading observer
 
-const loadingImg = document.querySelector('.counter__img');
-const counterBox = document.querySelector('.counter__wrapper');
+// const loadingImg = document.querySelector('.counter__img');
+// const counterBox = document.querySelector('.counter__wrapper');
 
-const loadImgOptions = {
-    threshold: 1,
-    rootMargin: "0px 0px 0px 100px"
-};
+// const loadImgOptions = {
+//     threshold: 1,
+//     rootMargin: "0px 0px 0px 100px"
+// };
 
-const loadImgObserver = new IntersectionObserver(function (entries, loadImgObserver) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            return;
-        } else {
-            entry.target.classList.add('appear');
-            counterBox.classList.add('appear');
-            loadImgObserver.unobserve(entry.target);
-        }
-    })
-}, loadImgOptions);
+// const loadImgObserver = new IntersectionObserver(function (entries, loadImgObserver) {
+//     entries.forEach(entry => {
+//         if (!entry.isIntersecting) {
+//             return;
+//         } else {
+//             entry.target.classList.add('appear');
+//             counterBox.classList.add('appear');
+//             loadImgObserver.unobserve(entry.target);
+//         }
+//     })
+// }, loadImgOptions);
 
-loadImgObserver.observe(loadingImg);
+// loadImgObserver.observe(loadingImg);
+
+

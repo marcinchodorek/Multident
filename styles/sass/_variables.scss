@@ -30,8 +30,3 @@ $max_font: 24px;
 }
 
 
-@mixin cta-res {
-    @media screen and (min-width: 1125px) {
-        flex-direction: initial;
-    }
-}

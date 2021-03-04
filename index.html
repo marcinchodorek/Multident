@@ -118,25 +118,9 @@
     <footer>Multident 2021</footer>
 
     <script src="https://kit.fontawesome.com/8e71691b9c.js" crossorigin="anonymous"></script>
+    <script src="/javascript/global.js"></script>
     <script src="/javascript/observers.js"></script>
     <script>
-        // hamburger menu toggle
-        const hamburger = document.querySelector('.navbar__burger-box');
-        const hamburgerBtn = document.querySelector('.navbar__burger');
-        const navigation = document.querySelector('.navbar__navigation');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('burger--active');
-            navigation.classList.toggle('navbar__navigation--active');
-        });
-
-        hamburgerBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                hamburger.classList.toggle('burger--active');
-                navigation.classList.toggle('navbar__navigation--active');
-            }
-        })
-
         //svg animation
         const textPath = document.querySelectorAll('.hero__text-svg path');
 

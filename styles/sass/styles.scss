@@ -3,16 +3,29 @@
 
 html {
     @include fluid-type($min_width, $max_width, $min_font, $max_font);
-    // overflow-x: hidden;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow: hidden;
     box-sizing: border-box;
     background-color: $primary-color;
     font-family: 'Montserrat', sans-serif;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    margin-top: 10%;
+    padding: 15px;
+    background-color: white;
+    color: $primary-color;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 // Navigation Bar
@@ -164,6 +177,7 @@ body {
         letter-spacing: 0.1rem;
         flex: 1;
 
+
         }
         a {
             text-decoration: none;
@@ -231,7 +245,7 @@ body {
     &__text {
         @include hero-align;
 
-        margin-top: 200px;
+        margin-top: min(20vh);
 
         & svg {
             width: 70vw;
@@ -335,29 +349,53 @@ body {
     }
 }
 
+// Brief about
+
+.about {
+
+    &__content {
+        margin: 150% auto 0 auto;
+        text-align: center;
+        width: 85%;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+
+        &.appear {
+            opacity: 1;
+        }
+    }
+}
+
+
 
 // Main Page Counter
 
 .counter {
-    margin-top: 200%;
-    position: relative;
+    margin-top: 70%;
 
     &__img {
         width: 100%;
-        margin-bottom: 50px;
+        height: auto;
+        opacity: 0;
+        transition: opacity .5s ease-in;
+        &.appear {
+            opacity: 1;
+        }
     }
 
     &__wrapper {
         width: 100%;
         min-height: 35vh;
-        max-height: 45vh;
-        background-color: white;
-        position: absolute;
-        top: 90%;
-        box-shadow: 0 5px 10px 0 black;
+        background-color: transparent;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        transition: background-color .5s ease-in;
+
+        &.appear {
+            background-color: white;
+        }
 
         &-list {
             padding: 5px;
@@ -379,11 +417,17 @@ body {
             & p {
                 text-align: center;
                 color: $primary-color;
+                cursor: default;
             }
 
             & i {
                 font-size: 1.6rem;
                 color: $primary-color;
+                transition: color 0.2s ease-in-out;
+
+                &:hover {
+                    color: $secondary-color;
+                }
             }
 
 
@@ -391,7 +435,67 @@ body {
     }
 }
 
+// Call To Action buttons
 
+.cta {
+    @include cta-res;
+
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    &-btn {
+        margin: 50px auto 50px auto;
+        background-color: transparent;
+        border: none;
+        transition: color 0.2s ease-in-out;
+        color: white;
+        font-size: 1.2rem;
+        opacity: 0;
+        cursor: pointer;
+        position: relative;
+        width: 50%;
+
+        &::after {
+            bottom: 0;
+            content: '';
+            height: 2px;
+            border-radius: 2px;
+            left: 50%;
+            position: absolute;
+            background: $secondary-color;
+            transition: width .3s ease, left .3s ease;
+            width: 0;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            color: $secondary-color;
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    & .find-btn {
+        width: 20%;
+    }
+
+    & .hours-btn {
+        width: 35%;
+    }
+
+    @keyframes delayLoad {
+        0% {
+            transform: scale(.99);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
 
 // Offer
 

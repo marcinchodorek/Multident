@@ -81,28 +81,71 @@
         <div class="hero__rectangle hero__rectangle-right"></div>
     </section>
 
+    <div class="about">
+        <p class="about__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam perspiciatis ipsum
+            dolor, iusto quam temporibus, officia maxime fuga amet laborum mollitia eos sint qui. Officia labore porro
+            debitis ea voluptate?</p>
+    </div>
+
     <section class="counter">
-        <img loading="lazy" src="/pictures/counter-pic.png" alt="Picture of toothbrushes" class="counter__img">
+        <img loading="lazy" src="/pictures/counter-pic.png" alt="Picture of toothbrushes" class="counter__img       ">
         <div class="counter__wrapper">
             <ul class="counter__wrapper-list">
                 <li class="counter__wrapper-item">
                     <i class="fas fa-heart"></i>
-                    <p> <span>3000</span> <br> zadowolonych pacjentów</p>
+                    <p> <span data-target="3000">0</span> <br> zadowolonych pacjentów</p>
                 </li>
                 <li class="counter__wrapper-item">
                     <i class="fas fa-plus-square"></i>
-                    <p> <span>6000</span> <br> wyleczonych zębów</p>
+                    <p> <span data-target="6000">0</span> <br> wyleczonych zębów</p>
                 </li>
                 <li class="counter__wrapper-item">
                     <i class="fas fa-coffee"></i>
-                    <p> <span>500</span> <br> wypitych kubków kawy</p>
+                    <p> <span data-target="500">0</span> <br> wypitych kubków kawy</p>
                 </li>
             </ul>
         </div>
     </section>
 
-    <script src="javascript/script.js"></script>
+    <section class="cta">
+        <btn class="cta-btn contact-btn">Zadzwoń i umów się na wizytę</btn>
+        <btn class="cta-btn find-btn">Znajdź nas</btn>
+        <btn class="cta-btn hours-btn">Zobacz godziny pracy</button>
+    </section>
+
+
+
+    <footer>Multident 2021</footer>
+
     <script src="https://kit.fontawesome.com/8e71691b9c.js" crossorigin="anonymous"></script>
+    <script src="/javascript/observers.js"></script>
+    <script>
+        // hamburger menu toggle
+        const hamburger = document.querySelector('.navbar__burger-box');
+        const hamburgerBtn = document.querySelector('.navbar__burger');
+        const navigation = document.querySelector('.navbar__navigation');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('burger--active');
+            navigation.classList.toggle('navbar__navigation--active');
+        });
+
+        hamburgerBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                hamburger.classList.toggle('burger--active');
+                navigation.classList.toggle('navbar__navigation--active');
+            }
+        })
+
+        //svg animation
+        const textPath = document.querySelectorAll('.hero__text-svg path');
+
+        setTimeout(() => {
+            textPath.forEach(path => {
+                path.style.strokeDasharray = 0;
+            })
+        }, 3200);
+    </script>
 </body>
 
 </html>
